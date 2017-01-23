@@ -1,0 +1,466 @@
+{%load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv=Content-Type content="text/html;charset=UTF-8">
+	<meta name="description" value="Магазин 'Dream'"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{sitename}}</title>
+	<link rel="stylesheet" type="text/css" href="{% static "style1.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "footer.css" %}">
+	<link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="wrapper">
+		<nav class="top-bar">
+			<div class="container">
+				<div class="col-xs-12 col-sm-4 no-margin">
+					<ul>
+						<li>
+							<a data-page="7" href="products">Все товары</a>
+						</li>
+						<li>
+							<a data-page="10" href="dostavka">Доставка</a>
+						</li>
+						<li>
+							<a data-page="19" href="garantia">Гарантия</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 no-margin">
+					<a href="#"><b>Доставка по Украине (в лучшие сроки)</b></a>
+					<p></p>
+				</div>
+				<div class="col-xs-12 col-sm-4 no-margin">
+					<ul class="right">
+						<li>
+							<a id="register" href="user/register">Регистрация</a>
+						</li>
+						<li>
+							<a id="login" href="user/login">Вход</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAV-->
+		<!-- Start Header -->
+
+		<header class="header-alt no-padding-bottom">
+			<div class="container no-padding">
+				<div class="col-xs-12 col-md-3 logo-holder">
+					<div class="logo">
+						<a href="./">
+							<h1>{{sitename}}</h1>
+						</a>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-6 top-search-holder no-margin">
+					<div class="contact-row">
+						<div class="phone inline">
+							<i class="fa fa-phone"></i>
+							+380980000001
+						</div>
+						<div class="contact inline">
+							<i class="fa fa-envelope"></i>
+							e-mail:
+							<span class="le-color">dreambaby.com.ua@gmail.com</span>
+						</div>
+					</div>
+					<div class="search-area">
+						<form action="products">
+							<div class="control-group">
+								<input class="search-field input_search" type="text" name="keyword" value="" placeholder="Поиск товара" autocomplete="off">
+								<button class="search-button" type="submit" title="Найти"></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-3 top-cart-row no-margin">
+					<div class="top-cart-row-container">
+						<div class="wishlist-compare-hilder"></div>
+						<div class="top-cart-holder dropdown animate-dropdown">
+							<div id="cart_informer" class="backet">
+								<div id="cart">
+									<a id="cart_a" class="dropdown-toggle" data-toggle="dropdown">
+										<div class="basket-item-count">
+											<span class="count">0</span>
+											<img src="static/img/korzina.png" alt="">
+										</div>
+										<div class="total-price-basket">
+											<span class="lbl">Корзина</span>
+											<span class="total-price">Пусто</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<nav id="top-megamenu-nav" class="megamenu-vertical animate-dropdown">
+				<div class="container">
+					<div class="yamm navbar">
+						<div id="mc-horizontal-menu-collapse" class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+							{% for %}
+								<li>
+									<a href="">Коляски</a>
+								</li>
+								<li>
+									<a href="catalog/">Одежда</a>
+								</li>
+								<li>
+									<a href="catalog/">Сумки</a>
+								</li>
+								<li>
+									<a href="catalog/">Аксессуары</a>
+								</li>
+								<li class="dropdown">
+									<a href="catalog">Другие товары</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<div class="top-banner">
+			<a href="./">
+				<img src="static/img/img1.jpg" width="1200px" height="700px">
+			</a>
+		</div>
+	</div>
+	<div class="clearfix">
+		<br>
+	</div>
+	<!-- Section -->
+	<section id="banner-holder" class="wow">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 banner">
+					<a href="/catalog/">
+						<div class="banner-text theblue">
+							<h1>Коляски</h1>
+							<span class="tagline">для Ваших детей</span>
+						</div>
+						<img class="banner-image img-responsive" alt="" src="static/img/img3.jpg">
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 text-right banner">
+					<a href="products/">
+						<div class="banner-text right">
+							<h1>Вещи</h1>
+							<span class="tagline">для маленьких</span>
+						</div>
+						<img class="banner-image img-responsive" alt="" src="static/img/img3.jpg">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--End Section-->
+	<!-- TOvar -->
+	<div class="container">
+		<div class="tab-holder">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="/" data-toggle="tab">Хиты продаж</a></li>
+				<li><a href="#" data-toggle="tab">Новинки</a></li>
+				<li><a href="#" data-toggle="tab">Акции</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="featured" class="tab-pane active">
+					<div class="product-grid-holder">
+						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
+							<div class="product-item product">
+								<div class="ribbon blue">
+									<span>Новинка!</span>
+								</div>
+								<div class="ribbon green">
+									<span>Рекомендуем</span>
+								</div>
+								<div class="image">
+									<a href="/products">
+										<img src="/" alt="Текст">
+									</a>
+								</div>
+								<!--выбор варианта товара -->
+								<form class="variants" action="/cart">
+									<div class="body">
+										<div class="title">
+											<a href="/products">Название товара</a>
+										</div>
+									</div>
+									<div class="prices">
+										<div class="price-prev"></div>
+										<div class="price-current pull right">
+											<span class="pr">950</span>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="hover-area">
+										<div class="add-cart-button">
+											<button class="le-button" type="submit">В корзину</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
+							<div class="product-item product">
+								<div class="ribbon blue">
+									<span>Новинка!</span>
+								</div>
+								<div class="ribbon green">
+									<span>Рекомендуем</span>
+								</div>
+								<div class="image">
+									<a href="/products">
+										<img src="/" alt="Текст">
+									</a>
+								</div>
+								<!--выбор варианта товара -->
+								<form class="variants" action="/cart">
+									<div class="body">
+										<div class="title">
+											<a href="/products">Название товара</a>
+										</div>
+									</div>
+									<div class="prices">
+										<div class="price-prev"></div>
+										<div class="price-current pull right">
+											<span class="pr">950</span>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="hover-area">
+										<div class="add-cart-button">
+											<button class="le-button" type="submit">В корзину</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
+							<div class="product-item product">
+								<div class="ribbon blue">
+									<span>Новинка!</span>
+								</div>
+								<div class="ribbon green">
+									<span>Рекомендуем</span>
+								</div>
+								<div class="image">
+									<a href="/products">
+										<img src="/" alt="Текст">
+									</a>
+								</div>
+								<!--выбор варианта товара -->
+								<form class="variants" action="/cart">
+									<div class="body">
+										<div class="title">
+											<a href="/products">Название товара</a>
+										</div>
+									</div>
+									<div class="prices">
+										<div class="price-prev"></div>
+										<div class="price-current pull right">
+											<span class="pr">950</span>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="hover-area">
+										<div class="add-cart-button">
+											<button class="le-button" type="submit">В корзину</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
+							<div class="product-item product">
+								<div class="ribbon blue">
+									<span>Новинка!</span>
+								</div>
+								<div class="ribbon green">
+									<span>Рекомендуем</span>
+								</div>
+								<div class="image">
+									<a href="/products">
+										<img src="/" alt="Текст">
+									</a>
+								</div>
+								<!--выбор варианта товара -->
+								<form class="variants" action="/cart">
+									<div class="body">
+										<div class="title">
+											<a href="/products">Название товара</a>
+										</div>
+									</div>
+									<div class="prices">
+										<div class="price-prev"></div>
+										<div class="price-current pull right">
+											<span class="pr">950</span>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="hover-area">
+										<div class="add-cart-button">
+											<button class="le-button" type="submit">В корзину</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<nav aria-label="Page navigation">
+		  					<ul class="pagination">
+		    					<li>
+		      						<a href="#" aria-label="Previous">
+		        						<span aria-hidden="true">&laquo;</span>
+		      						</a>
+		    					</li>
+		    					<li><a href="#">1</a></li>
+		   						<li class="active"><a href="#">2</a></li>
+		    					<li><a href="#">3</a></li>
+		    					<li><a href="#">4</a></li>
+		    					<li><a href="#">5</a></li>
+		    					<li>
+		      						<a href="#" aria-label="Next">
+		        						<span aria-hidden="true">&raquo;</span>
+		      						</a>
+		    					</li>
+		  					</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Текст на сайте-->	
+	<div class="container">
+		<div class="row">
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+
+		</div>
+	</div>
+	<!-- Конец текста-->
+	<!-- END tovar-->
+	<div class="body">
+
+	    <ul>
+	        {% for category in categories%}
+	    	<li><a href="/{{category.alias}}/">{{category.name}}</a></li>
+	        {% endfor%}
+	    </ul>
+	</div>
+	<!-- FOOTER-->
+	<footer id="footer" class="color-bg">
+		<div class="link-list-row">
+			<div class="container no-padding">
+				<div class="col-xs-12 col-md-4">
+					<!-- Contact info-->
+					<div class="contact-info">
+						<div class="footer-logo">
+							<img src="static/img/img.jpg">
+						</div>
+						<p class="regular-bold">Контакты</p>
+						<p>
+							09800000001
+							<br>
+							Кривой Рог
+						</p>
+						<div class="social-icons">
+							<h3>Мы в соц.сетях</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-8 no-margin">
+					<div class="link-widget">
+						<div class="widget">
+							<h3>Категории</h3>
+							<ul>
+								<li>
+									<a href="catalog/">Категория1</a>
+								</li>
+								<li>
+									<a href="catalog/">Категория2</a>
+								</li>
+								<li>
+									<a href="catalog/">Категория3</a>
+								</li>
+								<li>
+									<a href="catalog/">Категория4</a>
+								</li>
+								<li>
+									<a href="catalog/">Категория5</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="link-widget">
+						<div class="widget">
+							<h3>Страницы</h3>
+								<ul>
+									<li>
+										<a href="catalog/">Страница 1</a>
+									</li>
+									<li>
+										<a href="catalog/">Страница 2</a>
+									</li>
+									<li>
+										<a href="catalog/">Страница 3</a>
+									</li>
+									<li>
+										<a href="catalog/">Страница 4</a>
+									</li>
+									<li>
+										<a href="catalog/">Страница 5</a>
+									</li>
+								</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="copyright-bar">
+				<div class="container">
+					<div class="col-xs-12 col-sm-6 no-margin">                
+           				<div class="copyright">              
+              				<a href="./">2016 © Пробный сайт </a> - все права защищены                 
+           				</div>
+           			</div>
+           		</div>          
+          	</div>
+		</div>
+	</footer>
+	<!-- END Footer-->
+</body>
+</html>

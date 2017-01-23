@@ -1,0 +1,339 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv=Content-Type content="text/html;charset=UTF-8">
+	<meta name="description" value="Магазин 'Dream'"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block title%}
+	<title>Интернет-магазин "Dream-baby"</title>
+	{% endblock title%}
+	<link rel="stylesheet" type="text/css" href="{{PORTAL_URL}}{% static "css/style1.css" %}">
+	<link rel="stylesheet" type="text/css" href="{{PORTAL_URL}}{% static "css/footer.css" %}">
+	<link rel="stylesheet" 
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% block exstra_css %}{% endblock exstra_css%}
+</head>
+<body>
+	<div class="wrapper">
+		<nav class="top-bar">
+			<div class="container">
+				<div class="col-xs-12 col-sm-4 no-margin">
+					<ul>
+						<li>
+							<a data-page="7" href="{% url "products" %}">Все товары</a>
+						</li>
+						<li>
+							<a data-page="10" href="{% url "dostavka" %}">Доставка</a>
+						</li>
+						<li>
+							<a data-page="19" href="{% url "garantia" %}">Гарантия</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 no-margin">
+					<a href="{% url "garantia" %}"><b>Доставка по Украине (в лучшие сроки)</b></a>
+					<p></p>
+				</div>
+				<div class="col-xs-12 col-sm-4 no-margin">
+					<ul class="right">
+						{% if user.is_authentificated %}
+						<li>
+							<a id="logout" href="{% url "users:auth_logout" %}">Выйти</a>
+						</li>
+						<span>{{user.username}}</span>
+						{% else %}
+						<li>
+							<a id="register" href="{% url "users:auth_login" %}">Вход</a>
+						</li>
+						<li>
+							<a id="login" href="{% url "users:registration_register" %}">Регистрация</a>
+						</li>
+					</ul>
+				</div>
+				{% endif %}
+			</div>
+		</nav>
+		<!-- END NAV-->
+		<!-- Start Header -->
+		{% block header%}
+		<header class="header-alt no-padding-bottom">
+			<div class="container no-padding">
+				<div class="col-xs-12 col-md-3 logo-holder">
+					<div class="logo">
+						<a href="{% url "home" %}">
+							<h1>Dream-baby</h1>
+						</a>
+					</div>
+				</div>
+				
+				<div class="col-xs-12 col-md-6 top-search-holder no-margin">
+					<div class="contact-row">
+						<div class="phone inline">
+							<i class="fa fa-phone"></i>
+							+380980000001
+						</div>
+						<div class="contact inline">
+							<i class="fa fa-envelope"></i>
+							e-mail:
+							<span class="le-color">dreambaby.com.ua@gmail.com</span>
+						</div>
+					</div>
+					<div class="search-area">
+						<form action="products">
+							<div class="control-group">
+								<input class="search-field input_search" type="text" name="keyword" value="" placeholder="Поиск товара" autocomplete="off">
+								<button class="search-button" type="submit" title="Найти"></button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-3 top-cart-row no-margin">
+					<div class="top-cart-row-container">
+						<div class="wishlist-compare-hilder"></div>
+						<div class="top-cart-holder dropdown animate-dropdown">
+							<div id="cart_informer" class="backet">
+								<div id="cart">
+									<a id="cart_a" class="dropdown-toggle" data-toggle="dropdown">
+										<div class="basket-item-count">
+											<span class="count">0</span>
+											<img src="static/img/korzina.png" alt="">
+										</div>
+										<div class="total-price-basket">
+											<span class="lbl">Корзина</span>
+											<span class="total-price">Пусто</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endblock header%}
+			{% block category %}
+			<nav id="top-megamenu-nav" class="megamenu-vertical animate-dropdown">
+				<div class="container">
+					<div class="yamm navbar">
+						<div id="mc-horizontal-menu-collapse" class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+							{% for category in categories%}
+								<li>
+									<a href="{{PORTAL_URL}}/category/{{ category.alias }}">{{category.name}}</a>
+								</li>
+							{% endfor%}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			{%endblock category%}
+		</header>
+		{% block content %}
+		<div class="top-banner">
+			<a href="./">
+				<img src="static/img/img1.jpg" width="1200px" height="700px">
+			</a>
+		</div>
+	</div>
+	<div class="clearfix">
+		<br>
+	</div>
+	<!-- Section -->
+	<section id="banner-holder" class="wow">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 banner">
+					<a href="{% url "products" %}">
+						<div class="banner-text theblue">
+							<h1>Коляски</h1>
+							<span class="tagline">для Ваших детей</span>
+						</div>
+						<img class="banner-image img-responsive" alt="" src="static/img/img3.jpg">
+					</a>
+				</div>
+				<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 text-right banner">
+					<a href="{% url "products" %}">
+						<div class="banner-text right">
+							<h1>Вещи</h1>
+							<span class="tagline">для маленьких</span>
+						</div>
+						<img class="banner-image img-responsive" alt="" src="static/img/img3.jpg">
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--End Section-->
+	<!-- TOvar -->
+	<div class="container">
+		<div class="tab-holder">
+			<ul class="nav nav-tabs">
+				<li role="presentation" {% if request.path == home_url %} class="active" {% endif %}><a href="{% url "home" %}" data-toggle="tab">Хиты продаж</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="featured" class="tab-pane active">
+					<div class="product-grid-holder">
+					{%for tovar in tovars %}
+						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
+							<div class="product-item product">
+								<div class="image">
+									<a href="{{ tovar.image.url }}">
+										<img src="{{ tovar.image.url }}" >
+									</a>
+								</div>
+								<!--выбор варианта товара -->
+								<form class="variants" action="/cart">
+									<div class="body">
+										<div class="title">
+											<a href="{% url 'item' tovar.alias %}">{{tovar.name}}</a>
+										</div>
+									</div>
+									<div class="prices">
+										<div class="price-prev"></div>
+										<div class="price-current pull-right">
+											<span class="pr">{{tovar.price}}</span>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+									<div class="hover-area">
+										<div class="add-cart-button">
+											<button class="le-button" type="submit">В корзину</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						{% endfor %}
+						<div class="paginator">
+						{% if tovars.has_other_pages %}
+						<nav aria-label="Page navigation">
+		  					<ul class="pagination">
+		    					<li>
+		      						<a aria-label="Previous" href="{% url "home" %}?page=1">&laquo;
+		      						</a>
+		    					</li>
+		    					{% for p in tovars.paginator.page_range %}
+		    					<li {% if tovars.number == p %}class="active"{% endif %}><a href="{% url "home" %}?page={{ p }}">{{ p }}</a></li>
+		    					{% endfor %}
+		    					<li>
+		      						<a href="{% url "home" %}?page={{ tovars.paginator.num_pages }}">&raquo;
+		      						</a>
+		    					</li>
+		  					</ul>
+						</nav>
+						{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div
+	</div>
+	<br>
+	<!-- Текст на сайте-->	
+	<div class="container">
+		<div class="row">
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+			<p>
+				<span style="font-family: verdana, geneva;">
+					Сайт предназначен для изучения Джанго!!! 
+				</span>
+			</p>
+
+		</div>
+	</div>
+	<!-- Конец текста-->
+	<!-- END tovar-->
+	{% endblock content%}
+	<!-- FOOTER-->
+	{% block footer %}
+	<footer id="footer" class="color-bg">
+		<div class="link-list-row">
+			<div class="container no-padding">
+				<div class="col-xs-12 col-md-4">
+					<!-- Contact info-->
+					<div class="contact-info">
+						<div class="footer-logo">
+							<img src="static/img/bird.png">
+						</div>
+						<p class="regular-bold">Контакты</p>
+						<p>
+							09800000001
+							<br>
+							Кривой Рог
+						</p>
+						<div class="social-icons">
+							<h3>Мы в соц.сетях</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-8 no-margin">
+					<div class="link-widget">
+						<div class="widget">
+							<h3>Категории</h3>
+							<ul>
+								{% for category in categories%}
+								<li>
+									<a href="/category/{{ category.alias }}">{{category.name}}</a>
+								</li>
+							{% endfor%}
+							</ul>
+						</div>
+					</div>
+					<div class="link-widget">
+						<div class="widget">
+							<h3>Страницы</h3>
+								<ul>
+									<li>
+										<a href="{% url "products" %}">Все товары</a>
+									</li>
+									<li>
+										<a href="{% url "dostavka" %}">Доставка</a>
+									</li>
+									<li>
+										<a href="{% url "garantia" %}">Гарантия</a>
+									</li>
+								</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="copyright-bar">
+				<div class="container">
+					<div class="col-xs-12 col-sm-6 no-margin">                
+           				<div class="copyright">              
+              				<a href="{% url 'home' %}">2016 © Пробный сайт </a> - все права защищены                 
+           				</div>
+           			</div>
+           		</div>          
+          	</div>
+		</div>
+	</footer>
+	<!-- END Footer-->
+	{% endblock footer %}
+</body>
+</html>

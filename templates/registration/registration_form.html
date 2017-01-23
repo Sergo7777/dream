@@ -1,0 +1,51 @@
+{%extends "base.html"%}
+{% load static from staticfiles%}
+{% block title%}{% endblock title%}
+{% block status_message %}
+{% if form.errors %}
+<div class="alert-warning" role="alert">Пожалуйста, исправьте ошибки {{form.non_field_errors}}</div>
+{% endif %}
+{% endblock status_message%}
+{% block content %}
+
+<form class="form-horizontal" action="{% url "users:registration_register" %}" method="post">
+	{% csrf_token %}
+	<h1 class="center">Регистрация</h1>
+	<input type="hidden" name="text" value="{% url "home" %} />
+	<div class="form-group form-group-lg">
+		<label for="login" class="col-xs-2 control-label">Имя пользователя</label>
+		<div class="col-xs-10">
+			<input type="text" class="form-control" id="login" value="" 
+				name="username">
+		</div>
+		<span class="help-block">{{form.errors.username.as_text}}</span>
+	</div>
+	<div class="form-group form-group-lg">
+		<label for="email" class="col-xs-2 control-label">Ваш Email</label>
+		<div class="col-xs-10">
+			<input type="text" class="form-control" id="email" value="" 
+				name="email">
+		</div>
+		<span class="help-block">{{form.errors.email.as_text}}</span>
+	</div>
+	<div class="form-group form-group-lg">
+		<label for="password" class="col-xs-2 control-label">Ваш Пароль</label>
+		<div class="col-xs-10">
+			<input type="password" class="form-control" id="password" value="" 
+				name="password1">
+		</div>
+		<span class="help-block">{{form.errors.password1.as_text}}</span>
+
+	</div>
+	<div class="form-group form-group-lg">
+		<label for="password-confirm" class="col-xs-2 control-label">Повторите пароль</label>
+		<div class="col-xs-10">
+			<input type="password" class="form-control" id="password-confirm" value="" 
+				name="password2">
+		</div>
+		<span class="help-block">{{form.errors.password2.as_text}}</span>
+
+	</div>
+	<button type="submit" class="btn btn-primary">Зарегистрировать</button>	
+</form>
+{% endblock content %}
