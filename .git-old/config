@@ -1,0 +1,24 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	autocrls = true
+[remote "orig"]
+	url = git@github.com:Sergo7777/dream.git
+	fetch = +refs/heads/*:refs/remotes/orig/*
+[remote "one"]
+	url = git@github.com:Sergo7777/dream.git
+	fetch = +refs/heads/*:refs/remotes/one/*
+[branch "master"]
+[remote "origin"]
+	url = https://github.com/Sergo7777/dream.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "dream"]
+	url = https://Sergo7777/DreamBaby.git
+	fetch = +refs/heads/*:refs/remotes/dream/*
+[remote "d"]
+	url = https://github.com/Sergo7777/DreamBaby.git
+	fetch = +refs/heads/*:refs/remotes/d/*
+[http]
+	postBuffer = 26214400
