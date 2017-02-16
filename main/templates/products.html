@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="container">
+	<div class="col-xs-12 col-sm-3 no-margin sidebar narrow">
+			<div class="widget">
+				<h2 class="border">Информация</h2>
+				<div class="body">
+					<ul class="le-links">
+						<li>
+							<a href="{% url "products" %}">Все товары</a>
+						</li>
+						<li>
+							<a href="{% url "dostavka" %}">Доставка</a>
+						</li>
+						<li>
+							<a href="{% url "garantia" %}">Гарантия</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+	</div>
+	<div class="col-xs-12 col-sm-9 no-margin wide sidebar">
+		<div class="grid-list-products">
+			<h2 class="selection-title"> Все товары </h2>
+			<ul class="nav nav-pills">
+			    <li role="presentation"><a href="{% url "products" %}">По умолчанию 
+			    {% if request.GET.order_by != 'price' and request.GET.order_by != 'name' %}&#10004;{% endif %}</a></li>
+				<li role="presentation"><a href="{% url "products" %}?order_by=price{% if request.GET.order_by == 'price' and request.GET.reverse != '1' %}&amp;reverse=1{% endif %}"> По цене {% if request.GET.order_by == 'price' and request.GET.reverse != '1' %}&#10004;{% endif %}</a></li>
+				<li role="presentation"><a href="{% url "products" %}?order_by=name{% if request.GET.order_by == 'name' and request.GET.reverse != '1' %}&amp;reverse=1{% endif %}">По названию {% if request.GET.order_by == 'name' and request.GET.reverse != '1' %}&#10004;{% endif %}</a></li>
+			</ul>
+			<br>
+			<div class="tab-content">
+				<div id="featured" class="tab-pane active">
+					<div class="product-grid-holder">
+					{% for product in products %}
+						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
+								<div class="product-item product">
+									<div class="image">
+										<a href="{{ product.image.url }}">
+											<img src="{{ product.image.url }}" >
+										</a>
+									</div>
+									<!--выбор варианта товара -->
+									<form class="variants" action="{% url 'cart:CartAdd' product.id %}" method="post">
+									{{ cart_product_form }}
+										{% csrf_token %}
+										<div class="body">
+											<div class="title">
+												<a href="{% url 'item' product.alias %}">{{product.name}}</a>
+											</div>
+										</div>
+										<div class="prices">
+											<div class="price-prev"></div>
+											<div class="price-current pull-right">
+												<span class="pr">{{product.price}}</span>
+											</div>
+										</div>
+										<div class="clearfix"></div>
+										<div class="hover-area">
+											<div class="add-cart-button">
+												<button class="le-button" type="submit">В корзину</button>
+											</div>
+										</div>
+									</form>
+								</div>
+						</div>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="paginator">
+						{% if products.has_other_pages %}
+						{% with order_by=request.GET.order_by reverse=request.GET.reverse %}
+							<nav aria-label="Page navigation">
+			  					<ul class="pagination">
+			    					<li>
+			      						<a aria-label="Previous" href="{% url "products" %}?page=1&amp;order_by={{order_by}}&amp;reverse={{reverse}}">&laquo;
+			      						</a>
+			    					</li>
+			    					{% for p in products.paginator.page_range %}
+			    					<li {% if products.number == p %}class="active"{% endif %}>
+			    						<a href="{% url "products" %}?page={{ p }}&amp;order_by={{ order_by }}&amp;reverse={{reverse}}">{{ p }}</a></li>
+			    					{% endfor %}
+			    					<li>
+			      						<a href="{% url "products" %}?page={{ products.paginator.num_pages }}&amp;order_by={{order_by}}&amp;reverse={{reverse}}">&raquo;
+			      						</a>
+			    					</li>
+			  					</ul>
+							</nav>
+						{% endwith %}
+						{% endif %}
+	</div>
+</div>
+<div class="add-footeer" id="add-footeer">
+	<br>
+	<br>
+</div>
+{% endblock content %}

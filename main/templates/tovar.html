@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="container">
+	<div class="col-xs-12 col-sm-6 col-md-5 no-margin" id="gallery-holder">
+		<div class="product-item-holder" id="small-galery">
+			<div class="image">
+				<img src="{{product.image.url}}">
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-7 no-margin" id="body-holder">
+		<div class="body1">
+			<div class="title">
+				<h1>{{product.name}}</h1>
+			</div>
+			<div class="excerpt">
+				<span style="font-family; verdana, geneva; font-size: medium;">{{product.discription}}Доброго времени суток! Многие из вас хотели бы научиться создавать интернет-магазины, так как это одна из самых прибыльных ниш в области веб-разработки. Естественно есть куча готовых решений, но если вы хотите узнать как это работает, то следует самому попробовать пройти этот путь с самого начала и до конца. Я ранее не создавал подобного рода проекты на django, в моей компетенции только блоги, и для меня это будет также в новинку, как и для многих из вас, но я думаю, что пора осилить это путь. В этом цикле статей я буду преследовать следующие цели: </span>
+			</div>
+			<form class="variants" action="{% url 'cart:CartAdd' product.id %}" method="post">
+									{{ cart_product_form }}
+										{% csrf_token %}
+				<div class="price-current">
+					<span>{{product.price}}</span>
+				</div>
+				<div class="holder">
+					<button id="button-cart" class="le-button huge" type="submit">В корзину</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<section id="single-product-tab">
+		<div class="container">
+			<div class="tab-holder">
+				<ul class="nav nav-tabs simple">
+					<li class="active">
+						<a href="">Описание</a>
+					</li>
+					<li>
+						<a href="">Комментарии</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="discription">
+						<span id="discription" >{{product.discription}}Доброго времени суток! Многие из вас хотели бы научиться создавать интернет-магазины, так как это одна из самых прибыльных ниш в области веб-разработки. Естественно есть куча готовых решений, но если вы хотите узнать как это работает, то следует самому попробовать пройти этот путь с самого начала и до конца. Я ранее не создавал подобного рода проекты на django, в моей компетенции только блоги, и для меня это будет также в новинку, как и для многих из вас, но я думаю, что пора осилить это путь. В этом цикле статей я буду преследовать следующие цели: </span	>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+{% endblock content %}
+{% block cat%}{% endblock cat%}
