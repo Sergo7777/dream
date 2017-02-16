@@ -1,0 +1,9 @@
+.form-horizontal input{
+max-width: 300px;
+margin-top: 10px;
+}
+
+
+#button-login{
+	margin:10px 0 20px 17%;
+}

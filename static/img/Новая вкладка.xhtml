@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<!DOCTYPE html [
+  <!ENTITY % newTabDTD SYSTEM "chrome://browser/locale/newTab.dtd">
+  %newTabDTD;
+  <!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd">
+  %browserDTD;
+  <!ENTITY % globalDTD SYSTEM "chrome://global/locale/global.dtd">
+  %globalDTD;
+]>
+<html xmlns="http://www.w3.org/1999/xhtml" hasBrowserHandlers="true">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>Новая вкладка</title>
+
+  <link rel="stylesheet" type="text/css" media="all" href="%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0_files/global.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0_files/contentSearchUI.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0_files/newTab_002.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0_files/newTab.css" />
+</head>
+
+<body dir="ltr">
+  <div id="newtab-customize-overlay"></div>
+
+  <div class="newtab-customize-panel-container">
+    <div id="newtab-customize-panel" orient="vertical">
+        <div id="newtab-customize-panel-anchor"></div>
+        <div id="newtab-customize-panel-inner-wrapper">
+          <div id="newtab-customize-title" class="newtab-customize-panel-item">
+            <label>УПРАВЛЕНИЕ «НОВОЙ ВКЛАДКОЙ»</label>
+          </div>
+
+          <div class="newtab-customize-complex-option">
+            <div id="newtab-customize-classic" class="newtab-customize-panel-superitem newtab-customize-panel-item selectable" selected="true">
+                <label>Отображать ваш топ сайтов</label>
+            </div>
+            <div id="newtab-customize-enhanced" class="newtab-customize-panel-subitem" selected="true">
+                <label class="checkbox"></label>
+                <label>Включая предлагаемые сайты</label>
+            </div>
+          </div>
+          <div id="newtab-customize-blank" class="newtab-customize-panel-item selectable">
+            <label>Отображать пустую страницу</label>
+          </div>
+          <div id="newtab-customize-learn" class="newtab-customize-panel-item">
+            <label>Узнать больше о «Новой вкладке»</label>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="newtab-vertical-margin">
+    <div id="newtab-margin-top"></div>
+    <div id="newtab-margin-undo-container">
+      <div id="newtab-undo-container" undo-disabled="true">
+        <label id="newtab-undo-label">Миниатюра удалена.</label>
+        <button id="newtab-undo-button" tabindex="-1" class="newtab-undo-button">Отменить.</button>
+        <button id="newtab-undo-restore-button" tabindex="-1" class="newtab-undo-button">Восстановить все.</button>
+        <button id="newtab-undo-close-button" tabindex="-1" title="Скрыть"></button>
+      </div>
+    </div>
+
+    <div id="newtab-search-container">
+      <div id="newtab-search-form">
+        <div id="newtab-search-icon"></div>
+        <input name="q" id="newtab-search-text" aria-label="Поисковый запрос" maxlength="256" dir="auto" autocomplete="off" aria-autocomplete="true" aria-controls="searchSuggestionTable" aria-expanded="false" placeholder="Поиск" type="text" />
+        <input id="newtab-search-submit" value="" aria-label="Произвести поиск" type="button" />
+      <table id="searchSuggestionTable" class="contentSearchSuggestionTable" role="presentation" hidden=""><tr class="contentSearchHeaderRow"><td class="contentSearchHeader" id="contentSearchDefaultEngineHeader"><img src="blob:null/240fbd2f-a519-4ab1-963e-e23cda97d0de" />Искать в Google</td></tr><tr class="contentSearchSuggestionsContainer"><td class="contentSearchSuggestionsContainer"><table class="contentSearchSuggestionsList" role="listbox"></table></td></tr><table class="contentSearchOneOffsTable contentSearchSuggestionsContainer" role="group"><tr class="contentSearchHeaderRow"><td class="contentSearchHeader" id="contentSearchSearchWithHeader">Поиск через:</td></tr></table><button class="contentSearchSettingsButton contentSearchHeaderRow contentSearchHeader" id="contentSearchSettingsButton" aria-selected="false">Изменить параметры поиска</button></table></div>
+    </div>
+
+    <div id="newtab-horizontal-margin">
+      <div class="newtab-side-margin"></div>
+      <div id="newtab-grid" style="width: 930px; max-width: 1551px; height: 802px; max-height: 800px;"><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Caesar cipher
+http://localhost:8000/" href="http://localhost:8000/">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Flocalhost%3A8000%2F&amp;revision=18&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">localhost</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Входящие - serenkiydenisenko@gmail.com - Gmail
+https://mail.google.com/mail/u/0/#inbox" href="https://mail.google.com/mail/u/0/#inbox">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F%23inbox&amp;revision=7776&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">mail.google.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="tranlate - Поиск в Google
+https://www.google.com.ua/search?client=ubuntu&amp;channel=fs&amp;q=tranlate&amp;ie=utf-8&amp;oe=utf-8&amp;gfe_rd=cr&amp;ei=WZ-UWIOXBo2yyAXtjYGgCw" href="https://www.google.com.ua/search?client=ubuntu&amp;channel=fs&amp;q=tranlate&amp;ie=utf-8&amp;oe=utf-8&amp;gfe_rd=cr&amp;ei=WZ-UWIOXBo2yyAXtjYGgCw">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=https%3A%2F%2Fwww.google.com.ua%2Fsearch%3Fclient%3Dubuntu%26channel%3Dfs%26q%3Dtranlate%26ie%3Dutf-8%26oe%3Dutf-8%26gfe_rd%3Dcr%26ei%3DWZ-UWIOXBo2yyAXtjYGgCw&amp;revision=4886&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">google.com.ua</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Stack Overflow на русском
+http://ru.stackoverflow.com/" href="http://ru.stackoverflow.com/">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fru.stackoverflow.com%2F&amp;revision=7062&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">ru.stackoverflow.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="JSON with Ajax
+https://www.tutorialspoint.com/json/json_ajax_example.htm" href="https://www.tutorialspoint.com/json/json_ajax_example.htm">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=https%3A%2F%2Fwww.tutorialspoint.com%2Fjson%2Fjson_ajax_example.htm&amp;revision=3269&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">tutorialspoint.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="27.3. pdb — The Python Debugger — Python 3.6.0 documentation
+https://docs.python.org/3/library/pdb.html" href="https://docs.python.org/3/library/pdb.html">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=https%3A%2F%2Fdocs.python.org%2F3%2Flibrary%2Fpdb.html&amp;revision=6404&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">docs.python.org</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Справочник по полям модели — Документация Django 1.9
+http://djbook.ru/rel1.9/ref/models/fields.html#autofield" href="http://djbook.ru/rel1.9/ref/models/fields.html#autofield">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fdjbook.ru%2Frel1.9%2Fref%2Fmodels%2Ffields.html%23autofield&amp;revision=5412&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">djbook.ru</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="JQuery getJSON () Метод
+http://www.w3schools.com/jquery/ajax_getjson.asp" href="http://www.w3schools.com/jquery/ajax_getjson.asp">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fwww.w3schools.com%2Fjquery%2Fajax_getjson.asp&amp;revision=684&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">w3schools.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Ajax запрос JSON-данных — JQuery
+http://jquery.page2page.ru/index.php5/Ajax_%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81_JSON-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85" href="http://jquery.page2page.ru/index.php5/Ajax_%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81_JSON-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fjquery.page2page.ru%2Findex.php5%2FAjax_%25D0%25B7%25D0%25B0%25D0%25BF%25D1%2580%25D0%25BE%25D1%2581_JSON-%25D0%25B4%25D0%25B0%25D0%25BD%25D0%25BD%25D1%258B%25D1%2585&amp;revision=2977&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">jquery.page2page.ru</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="jQuery.getJSON() | jQuery API Documentation
+http://api.jquery.com/jquery.getjson/" href="http://api.jquery.com/jquery.getjson/">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fapi.jquery.com%2Fjquery.getjson%2F&amp;revision=2699&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">api.jquery.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Edit fiddle - JSFiddle
+https://jsfiddle.net/5p4hn4py/" href="https://jsfiddle.net/5p4hn4py/">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=https%3A%2F%2Fjsfiddle.net%2F5p4hn4py%2F&amp;revision=4166&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">jsfiddle.net</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="[JavaScript] $(function(){ $('#search .dropdown-menu li a').on('click', function(e){ - Pastebin.com
+http://pastebin.com/R0TkyB5h" href="http://pastebin.com/R0TkyB5h">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fpastebin.com%2FR0TkyB5h&amp;revision=7001&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">pastebin.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Отправка POST запроса с файлами и metadata - python - automated-testing.info
+http://automated-testing.info/t/otpravka-post-zaprosa-s-fajlami-i-metadata/8939/4" href="http://automated-testing.info/t/otpravka-post-zaprosa-s-fajlami-i-metadata/8939/4">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fautomated-testing.info%2Ft%2Fotpravka-post-zaprosa-s-fajlami-i-metadata%2F8939%2F4&amp;revision=4549&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">automated-testing.info</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="Отправка данных формы ajax-ом - Javascript-форум
+http://javascript.ru/forum/jquery/21666-otpravka-dannykh-formy-ajax-om.html" href="http://javascript.ru/forum/jquery/21666-otpravka-dannykh-formy-ajax-om.html">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fjavascript.ru%2Fforum%2Fjquery%2F21666-otpravka-dannykh-formy-ajax-om.html&amp;revision=1909&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">javascript.ru</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div><div class="newtab-cell"><div class="newtab-site" draggable="true" type="history"><span class="newtab-sponsored">СПОНСОР</span><a class="newtab-link" title="jQuery.getJSON() :: Шпаргалка jQuery
+http://ruseller.com/jquery.php?id=17" href="http://ruseller.com/jquery.php?id=17">  <span class="newtab-thumbnail" style="background-image: url(&quot;moz-page-thumb://thumbnail/?url=http%3A%2F%2Fruseller.com%2Fjquery.php%3Fid%3D17&amp;revision=2197&quot;);"></span>  <span class="newtab-thumbnail enhanced-content"></span>  <span class="newtab-title">ruseller.com</span></a><input title="Закрепить этот сайт в текущей позиции" class="newtab-control newtab-control-pin" type="button" /><input title="Удалить этот сайт" class="newtab-control newtab-control-block" type="button" /><span class="newtab-suggested"></span></div></div></div>
+      <div class="newtab-side-margin"></div>
+    </div>
+    <div id="newtab-margin-bottom"></div>
+  </div>
+  <input id="newtab-customize-button" dir="ltr" title="Настройка страницы «Новая вкладка»" type="button" />
+</body>
+<script type="text/javascript;version=1.8" src="%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0_files/contentSearchUI.js"></script>
+<script type="text/javascript;version=1.8" src="%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B2%D0%BA%D0%BB%D0%B0%D0%B4%D0%BA%D0%B0_files/newTab.js"></script>
+</html>

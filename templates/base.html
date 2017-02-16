@@ -10,8 +10,11 @@
 	{% endblock title%}
 	<link rel="stylesheet" type="text/css" href="{{PORTAL_URL}}{% static "css/style1.css" %}">
 	<link rel="stylesheet" type="text/css" href="{{PORTAL_URL}}{% static "css/footer.css" %}">
+
+	<!-- link Bootstrap 3-->
 	<link rel="stylesheet" 
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     {% block exstra_css %}{% endblock exstra_css%}
 </head>
 <body>
@@ -37,26 +40,25 @@
 				</div>
 				<div class="col-xs-12 col-sm-4 no-margin">
 					<ul class="right">
-						{% if user.is_authentificated %}
-						<li>
-							<a id="logout" href="{% url "users:auth_logout" %}">Выйти</a>
-						</li>
-						<span>{{user.username}}</span>
+						{% if user.is_authenticated %}
+							<li>
+								<a id="logout" href="{% url "auth_logout" %}">Выйти</a>
+							</li>
+							<span>{{user.username}}</span>
 						{% else %}
-						<li>
-							<a id="register" href="{% url "users:auth_login" %}">Вход</a>
-						</li>
-						<li>
-							<a id="login" href="{% url "users:registration_register" %}">Регистрация</a>
-						</li>
+							<li>
+								<a id="register" href="{% url "auth_login" %}">Вход</a>
+							</li>
+							<li>
+								<a id="login" href="{% url "registration_register" %}">Регистрация</a>
+							</li>
+						{% endif %}
 					</ul>
 				</div>
-				{% endif %}
 			</div>
 		</nav>
 		<!-- END NAV-->
 		<!-- Start Header -->
-		{% block header%}
 		<header class="header-alt no-padding-bottom">
 			<div class="container no-padding">
 				<div class="col-xs-12 col-md-3 logo-holder">
@@ -66,7 +68,6 @@
 						</a>
 					</div>
 				</div>
-				
 				<div class="col-xs-12 col-md-6 top-search-holder no-margin">
 					<div class="contact-row">
 						<div class="phone inline">
@@ -80,9 +81,9 @@
 						</div>
 					</div>
 					<div class="search-area">
-						<form action="products">
+						<form action="{% url 'place_search' %}" method="GET">
 							<div class="control-group">
-								<input class="search-field input_search" type="text" name="keyword" value="" placeholder="Поиск товара" autocomplete="off">
+								<input class="search-field input_search" type="text" name="q" value="" placeholder="Поиск товара" autocomplete="off">
 								<button class="search-button" type="submit" title="Найти"></button>
 							</div>
 						</form>
@@ -94,14 +95,16 @@
 						<div class="top-cart-holder dropdown animate-dropdown">
 							<div id="cart_informer" class="backet">
 								<div id="cart">
-									<a id="cart_a" class="dropdown-toggle" data-toggle="dropdown">
+									<a id="cart_a" href="{% url 'cart:CartDetail' %}" class="dropdown-toggle" data-toggle="dropdown">
 										<div class="basket-item-count">
-											<span class="count">0</span>
-											<img src="static/img/korzina.png" alt="">
+											<img src="{{PORTAL_URL}}/static/img/korzina.png" alt="">
 										</div>
 										<div class="total-price-basket">
 											<span class="lbl">Корзина</span>
-											<span class="total-price">Пусто</span>
+											<span class="total-price">	
+											    <span class="value">{{ cart.get_total_price }}</span>
+											    <span class="sign"> грн</span>
+											</span>
 										</div>
 									</a>
 								</div>
@@ -110,8 +113,7 @@
 					</div>
 				</div>
 			</div>
-			{% endblock header%}
-			{% block category %}
+			{% block nav %}
 			<nav id="top-megamenu-nav" class="megamenu-vertical animate-dropdown">
 				<div class="container">
 					<div class="yamm navbar">
@@ -127,12 +129,12 @@
 					</div>
 				</div>
 			</nav>
-			{%endblock category%}
+			{% endblock nav %}
 		</header>
 		{% block content %}
 		<div class="top-banner">
 			<a href="./">
-				<img src="static/img/img1.jpg" width="1200px" height="700px">
+				<img src="{{PORTAL_URL}}/static/img/dream.jpg" width="1200px" height="700px">
 			</a>
 		</div>
 	</div>
@@ -149,7 +151,7 @@
 							<h1>Коляски</h1>
 							<span class="tagline">для Ваших детей</span>
 						</div>
-						<img class="banner-image img-responsive" alt="" src="static/img/img3.jpg">
+						<img class="banner-image img-responsive" alt="" src="{{PORTAL_URL}}/static/img/img3.jpg">
 					</a>
 				</div>
 				<div class="col-xs-12 col-md-6 col-sm-6 col-lg-6 text-right banner">
@@ -158,7 +160,7 @@
 							<h1>Вещи</h1>
 							<span class="tagline">для маленьких</span>
 						</div>
-						<img class="banner-image img-responsive" alt="" src="static/img/img3.jpg">
+						<img class="banner-image img-responsive" alt="" src="{{PORTAL_URL}}/static/img/img3.jpg">
 					</a>
 				</div>
 			</div>
@@ -169,30 +171,34 @@
 	<div class="container">
 		<div class="tab-holder">
 			<ul class="nav nav-tabs">
-				<li role="presentation" {% if request.path == home_url %} class="active" {% endif %}><a href="{% url "home" %}" data-toggle="tab">Хиты продаж</a></li>
+				<li role="presentation" class="active">
+					<a href="{% url "home" %}" data-toggle="tab">Хиты продаж</a>
+				</li>
 			</ul>
 			<div class="tab-content">
 				<div id="featured" class="tab-pane active">
 					<div class="product-grid-holder">
-					{%for tovar in tovars %}
+					{% for product in products %}
 						<div class="col-sm-4 col-md-3 no-margin product-item-holder hover">
 							<div class="product-item product">
 								<div class="image">
-									<a href="{{ tovar.image.url }}">
-										<img src="{{ tovar.image.url }}" >
+									<a href="{{ product.image.url }}">
+										<img src="{{ product.image.url }}" >
 									</a>
 								</div>
 								<!--выбор варианта товара -->
-								<form class="variants" action="/cart">
+								<form class="variants" action="{% url 'cart:CartAdd' product.id %}" method="post">
+								{{ cart_product_form }}
+								{% csrf_token %}
 									<div class="body">
 										<div class="title">
-											<a href="{% url 'item' tovar.alias %}">{{tovar.name}}</a>
+											<a href="{% url 'item' product.alias %}">{{product.name}}</a>
 										</div>
 									</div>
 									<div class="prices">
 										<div class="price-prev"></div>
 										<div class="price-current pull-right">
-											<span class="pr">{{tovar.price}}</span>
+											<span class="pr">{{product.price}} грн.</span>
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -205,29 +211,31 @@
 							</div>
 						</div>
 						{% endfor %}
-						<div class="paginator">
-						{% if tovars.has_other_pages %}
-						<nav aria-label="Page navigation">
-		  					<ul class="pagination">
-		    					<li>
-		      						<a aria-label="Previous" href="{% url "home" %}?page=1">&laquo;
-		      						</a>
-		    					</li>
-		    					{% for p in tovars.paginator.page_range %}
-		    					<li {% if tovars.number == p %}class="active"{% endif %}><a href="{% url "home" %}?page={{ p }}">{{ p }}</a></li>
-		    					{% endfor %}
-		    					<li>
-		      						<a href="{% url "home" %}?page={{ tovars.paginator.num_pages }}">&raquo;
-		      						</a>
-		    					</li>
-		  					</ul>
-						</nav>
-						{% endif %}
-						</div>
 					</div>
 				</div>
 			</div>
-		</div
+		</div>			
+	</div>
+	<!-- Paginator-->
+	<div class="paginator">
+		{% if products.has_other_pages %}
+		<nav aria-label="Page navigation">
+			<ul class="pagination">
+				<li>
+					<a aria-label="Previous" href="{% url "home" %}?page=1">&laquo;
+			    	</a>
+			    </li>
+			    {% for p in products.paginator.page_range %}
+			    <li {% if products.number == p %}class="active"{% endif %}>
+			    	<a href="{% url "home" %}?page={{ p }}">{{ p }}</a>
+			    </li>
+			    {% endfor %}
+			    <li>
+			      	<a href="{% url "home" %}?page={{ products.paginator.num_pages }}">&raquo;</a>
+			    </li>
+			</ul>
+		</nav>
+		{% endif %}
 	</div>
 	<br>
 	<!-- Текст на сайте-->	
@@ -278,7 +286,7 @@
 					<!-- Contact info-->
 					<div class="contact-info">
 						<div class="footer-logo">
-							<img src="static/img/bird.png">
+							<img src="{{PORTAL_URL}}{% static "img/bird.png" %}">
 						</div>
 						<p class="regular-bold">Контакты</p>
 						<p>
@@ -292,18 +300,20 @@
 					</div>
 				</div>
 				<div class="col-xs-12 col-md-8 no-margin">
+					{% block cat%}
 					<div class="link-widget">
 						<div class="widget">
 							<h3>Категории</h3>
 							<ul>
-								{% for category in categories%}
+								{% for category in categories %}
 								<li>
-									<a href="/category/{{ category.alias }}">{{category.name}}</a>
+									<a href="{{PORTAL_URL}}/category/{{ category.alias }}">{{category.name}}</a>
 								</li>
-							{% endfor%}
+							    {% endfor%}
 							</ul>
 						</div>
 					</div>
+					{% endblock cat %}
 					<div class="link-widget">
 						<div class="widget">
 							<h3>Страницы</h3>
@@ -335,5 +345,6 @@
 	</footer>
 	<!-- END Footer-->
 	{% endblock footer %}
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </body>
 </html>

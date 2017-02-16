@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block nav %}
+	<h2>Спасибо за заказ.</h2>
+{% endblock nav %}
+{% block content %}
+<div class="container">
+	<p>Индификатор вашего заказа: {{ order.id }}</p>
+</div>
+{% endblock content %}
+{% block cat %}
+<div class="link-widget">
+  <div class="widget">
+    <h3>DreamBaby</h3>
+  </div>
+</div>
+{% endblock cat %}

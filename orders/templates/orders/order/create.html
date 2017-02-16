@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static from staticfiles%}
+{% block exstra_css %}  
+<link rel="stylesheet" type="text/css" 
+		href="{{PORTAL_URL}}{% static 'css/create.css' %}">
+{% endblock exstra_css%}
+{% block nav %}
+	<h1>Оформление заказа</h1>
+{% endblock nav %}
+{% block content %}
+<div class="container">
+	<div class="col-sm-4">
+		<h3>Заполните форму</h3>
+		<form id='Zakaz' class="order-form"  action="" method="post">
+			{{ form.as_p }}
+			{% csrf_token %}
+			<input type="submit" class="btn btn-primary" value="Отправить">
+		</form>
+	</div>
+	<div class="order-info col-sm-8">
+		<h3>Ваш заказ</h3>
+		<ul>
+			{% for item in cart %}
+			<li>
+				{{ item.product.name }} | Количество: {{ item.quantity }} | Цена {{ item.total_price }}
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endblock content %}
+{% block cat %}
+<div class="link-widget">
+  <div class="widget">
+    <h3>DreamBaby</h3>
+  </div>
+</div>
+{% endblock cat %}

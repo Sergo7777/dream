@@ -1,0 +1,15 @@
+
+.container .order-info h2{
+  margin-bottom: 20px;
+}
+.container .order-form{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.container .order-form #Zakaz label{
+  display: block;
+}
+.container .order-form input{
+  width: 100%;
+  padding: 5px 10px;
+}
